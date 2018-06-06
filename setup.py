@@ -23,5 +23,7 @@ setup(
     description='API client for PIR',
     packages=find_packages(),
     include_package_data=True,
-    install_requires=get_requirements()
+    install_requires=get_requirements(),
+    test_suite='nose.collector',
+    tests_require=['nose', 'httpretty'],
 )

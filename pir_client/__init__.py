@@ -60,13 +60,26 @@ class PIRAPIClient(BaseAPIClient):
         """
         options = self.get_options()
 
-        market_choices = [
-            o['value'] for o in options['market']['choices']
-        ]
+        if 'market' in options:
+            market_choices = [
+                o['value'] for o in options['market']['choices']
+            ]
+        else:
+            market_choices = []
 
-        country_choices = [
-            o['value'] for o in options['country']['choices']
-        ]
+
+        if 'country' in options:
+            country_choices = [
+                o['value'] for o in options['country']['choices']
+            ]
+        else:
+            country_choices = []
+
+        if 'market' in data and 'country' in data:
+            raise ValueError('Cannot provide country and market')
+
+        if 'country' in data and data['country'] not in market_choices:
+            raise ValueError('Country option must be in {}'.format(country_choices))
 
         if 'market' in data and data['market'] not in market_choices:
             raise ValueError('Market option must be in {}'.format(market_choices))
