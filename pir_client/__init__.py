@@ -77,7 +77,7 @@ class PIRAPIClient(BaseAPIClient):
 
 
         if 'sector' in options:
-            country_choices = [
+            sector_choices = [
                 o['value'] for o in options['sector']['choices']
             ]
         else:
