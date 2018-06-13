@@ -78,7 +78,7 @@ class PIRAPIClient(BaseAPIClient):
         if 'market' in data and 'country' in data:
             raise ValueError('Cannot provide country and market')
 
-        if 'country' in data and data['country'] not in market_choices:
+        if 'country' in data and data['country'] not in country_choices:
             raise ValueError('Country option must be in {}'.format(country_choices))
 
         if 'market' in data and data['market'] not in market_choices:
