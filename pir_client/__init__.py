@@ -75,6 +75,7 @@ class PIRAPIClient(BaseAPIClient):
         else:
             country_choices = []
 
+
         if 'market' in data and 'country' in data:
             raise ValueError('Cannot provide country and market')
 
@@ -84,11 +85,10 @@ class PIRAPIClient(BaseAPIClient):
         if 'market' in data and data['market'] not in market_choices:
             raise ValueError('Market option must be in {}'.format(market_choices))
 
-        if 'country' in data and data['country'] not in market_choices:
-            raise ValueError('Country option must be in {}'.format(country_choices))
+        if 'sector' in data and data['sector'] not in sector_choices:
+            raise ValueError('Sector option must be in {}'.format(sector_choices))
+
 
         res = self.post('/api/pir/', data=data)
-
         res.raise_for_status()
-
         return res.json()
