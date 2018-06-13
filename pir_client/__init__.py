@@ -87,4 +87,8 @@ class PIRAPIClient(BaseAPIClient):
         if 'country' in data and data['country'] not in market_choices:
             raise ValueError('Country option must be in {}'.format(country_choices))
 
-        return self.post('/api/pir/', data=data).json()
+        res = self.post('/api/pir/', data=data)
+
+        res.raise_for_status()
+
+        return res.json()
