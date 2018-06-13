@@ -17,7 +17,7 @@ def get_requirements():
 
 setup(
     name='pir_client',
-    version="0.0.1",
+    version="0.0.2",
     license='MIT',
     author='Department for International Trade',
     description='API client for PIR',
