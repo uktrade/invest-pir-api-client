@@ -76,6 +76,14 @@ class PIRAPIClient(BaseAPIClient):
             country_choices = []
 
 
+        if 'sector' in options:
+            country_choices = [
+                o['value'] for o in options['sector']['choices']
+            ]
+        else:
+            sector_choices = []
+
+
         if 'market' in data and 'country' in data:
             raise ValueError('Cannot provide country and market')
 
