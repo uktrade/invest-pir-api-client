@@ -4,7 +4,7 @@ Client for the PIR service (yet to be deployed)
 
 ## Example 
 
-    from pir_client import PIRAPIClient
+    from pir_client.client import PIRAPIClient
 
     client = PIRAPIClient(
         base_url=settings.PIR_API_URL,
