@@ -16,8 +16,8 @@ Client for the PIR service (yet to be deployed)
         'name': 'test',
         'sector': 'tech',
         'market': 'usa',
-        'company': 'Rollo',
-        'email': 'rollokb@gmail.com'
+        'company': 'Acme',
+        'email': 'foo@acme.com'
     })
 
 ## Install 
