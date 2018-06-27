@@ -2,9 +2,9 @@ import httpretty
 import json
 import unittest
 
-from unittest import TestCase, mock
+from unittest import TestCase
 
-from pir_client import PIRAPIClient
+from pir_client.client import PIRAPIClient
 
 
 OPTIONS_DATA = {
@@ -53,8 +53,9 @@ class APIClientTestCase(TestCase):
         httpretty.enable()
         httpretty.register_uri(
             httpretty.OPTIONS, "http://none/api/pir/",
-           body=json.dumps(OPTIONS_DATA))
-        
+            body=json.dumps(OPTIONS_DATA)
+        )
+
         httpretty.register_uri(
             httpretty.POST, "http://none/api/pir/",
         )

@@ -1,4 +1,4 @@
-# PIR API
+# Invest PIR API Client
 
 Client for the PIR service (yet to be deployed)
 
@@ -22,4 +22,4 @@ Client for the PIR service (yet to be deployed)
 
 ## Install 
 
-    pip install -e git+https://github.com/rollokb/pir_client.git@master#egg=pir_client
+    pip install invest-pir-api-client
