@@ -1,1 +1,1 @@
--e git+https://git@github.com/uktrade/directory-client-core.git@2f366ea0a1e713165ced30cd678359ee67d2ed39#egg=directory_client_core
+directory-client-core
