@@ -1,6 +1,7 @@
 """
 Invest PIR API client
 """
+import pip.download
 from pip.req import parse_requirements
 from setuptools import setup, find_packages
 
@@ -8,6 +9,7 @@ from setuptools import setup, find_packages
 def get_requirements():
     return [str(r.req) for r in list(parse_requirements(
         'requirements.txt',
+        session=pip.download.PipSession()
     ))]
 
 
