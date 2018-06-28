@@ -3,6 +3,10 @@ from directory_client_core.base import BaseAPIClient
 
 class PIRAPIClient(BaseAPIClient):
 
+    endpoints = {
+        'pir': '/api/pir/'
+    }
+
     def get_options(self):
         """
         Field options. Useful when building a form.
@@ -13,7 +17,7 @@ class PIRAPIClient(BaseAPIClient):
         Also called when validating create report
         """
         return self.request(
-            url='/api/pir/',
+            url=self.endpoints['pir'],
             method="OPTIONS",
         ).json()['actions']['POST']
 
@@ -95,6 +99,6 @@ class PIRAPIClient(BaseAPIClient):
             raise ValueError(
                 'Sector option must be in {}'.format(sector_choices))
 
-        res = self.post('/api/pir/', data=data)
+        res = self.post(self.endpoints['pir'], data=data)
         res.raise_for_status()
         return res.json()
