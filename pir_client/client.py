@@ -1,6 +1,10 @@
 from directory_client_core.base import BaseAPIClient
 
 
+class InvalidChoice(ValueError):
+    pass
+
+
 class PIRAPIClient(BaseAPIClient):
 
     endpoints = {
@@ -85,18 +89,18 @@ class PIRAPIClient(BaseAPIClient):
             sector_choices = []
 
         if 'market' in data and 'country' in data:
-            raise ValueError('Cannot provide country and market')
+            raise InvalidChoice('Cannot provide country and market')
 
         if 'country' in data and data['country'] not in country_choices:
-            raise ValueError(
+            raise InvalidChoice(
                 'Country option must be in {}'.format(country_choices))
 
         if 'market' in data and data['market'] not in market_choices:
-            raise ValueError(
+            raise InvalidChoice(
                 'Market option must be in {}'.format(market_choices))
 
         if 'sector' in data and data['sector'] not in sector_choices:
-            raise ValueError(
+            raise InvalidChoice(
                 'Sector option must be in {}'.format(sector_choices))
 
         res = self.post(self.endpoints['pir'], data=data)
