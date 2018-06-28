@@ -31,7 +31,7 @@ jobs:
           command: |
             python3 -m venv venv
             . venv/bin/activate
-            pip install twine
+            pip install wheel twine
       - run:
           command: |
             . venv/bin/activate
