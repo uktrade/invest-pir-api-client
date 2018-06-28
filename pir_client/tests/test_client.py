@@ -4,7 +4,7 @@ import unittest
 
 from unittest import TestCase
 
-from pir_client.client import PIRAPIClient
+from pir_client.client import PIRAPIClient, InvalidChoice
 
 
 OPTIONS_DATA = {
@@ -76,7 +76,7 @@ class APIClientTestCase(TestCase):
 
         self.assertIsInstance(res, dict)
 
-        with self.assertRaises(ValueError):
+        with self.assertRaises(InvalidChoice):
             client.create_report({
                 'name': 'test',
                 'sector': 'tech',
@@ -85,7 +85,7 @@ class APIClientTestCase(TestCase):
                 'email': 'rollokb@gmail.com'
             })
 
-        with self.assertRaises(ValueError):
+        with self.assertRaises(InvalidChoice):
             client.create_report({
                 'name': 'test',
                 'sector': 'tech',
@@ -94,7 +94,7 @@ class APIClientTestCase(TestCase):
                 'email': 'rollokb@gmail.com'
             })
 
-        with self.assertRaises(ValueError):
+        with self.assertRaises(InvalidChoice):
             client.create_report({
                 'name': 'test',
                 'sector': 'tech',
