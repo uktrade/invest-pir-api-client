@@ -4,7 +4,7 @@ import unittest
 
 from unittest import TestCase
 
-from pir_client.client import PIRAPIClient, InvalidChoice
+from pir_client.client import pir_api_client, InvalidChoice
 
 
 OPTIONS_DATA = {
@@ -64,9 +64,8 @@ class APIClientTestCase(TestCase):
         httpretty.disable()
 
     def test_post(self):
-        client = PIRAPIClient(base_url='http://none', api_key='none')
 
-        res = client.create_report({
+        res = pir_api_client.create_report({
             'name': 'test',
             'sector': 'tech',
             'market': 'africa',
@@ -77,7 +76,7 @@ class APIClientTestCase(TestCase):
         self.assertIsInstance(res, dict)
 
         with self.assertRaises(InvalidChoice):
-            client.create_report({
+            pir_api_client.create_report({
                 'name': 'test',
                 'sector': 'tech',
                 'market': 'not a market',
@@ -86,7 +85,7 @@ class APIClientTestCase(TestCase):
             })
 
         with self.assertRaises(InvalidChoice):
-            client.create_report({
+            pir_api_client.create_report({
                 'name': 'test',
                 'sector': 'tech',
                 'country': 'not a country',
@@ -95,7 +94,7 @@ class APIClientTestCase(TestCase):
             })
 
         with self.assertRaises(InvalidChoice):
-            client.create_report({
+            pir_api_client.create_report({
                 'name': 'test',
                 'sector': 'tech',
                 'country': 'AF',

@@ -1,15 +1,19 @@
-from directory_client_core.base import BaseAPIClient
+import pkg_resources
+from directory_client_core.base import AbstractAPIClient
+from django.conf import settings
 
 
 class InvalidChoice(ValueError):
     pass
 
 
-class PIRAPIClient(BaseAPIClient):
+class PIRAPIClient(AbstractAPIClient):
 
     endpoints = {
         'pir': '/api/pir/'
     }
+
+    version = pkg_resources.get_distribution(__package__).version
 
     def get_options(self):
         """
@@ -106,3 +110,11 @@ class PIRAPIClient(BaseAPIClient):
         res = self.post(self.endpoints['pir'], data=data)
         res.raise_for_status()
         return res.json()
+
+
+pir_api_client = PIRAPIClient(
+    base_url=settings.PFP_API_CLIENT_BASE_URL,
+    api_key=settings.PFP_API_CLIENT_API_KEY,
+    sender_id=settings.PFP_API_CLIENT_SENDER_ID,
+    timeout=settings.PFP_API_CLIENT_DEFAULT_TIMEOUT,
+)
