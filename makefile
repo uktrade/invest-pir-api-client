@@ -5,7 +5,7 @@ clean:
 	-find . -type d -name "__pycache__" -delete
 
 test_requirements:
-	pip install -r requirements_test.txt
+	pip install -e .[test]
 
 flake8:
 	flake8 pir_client --exclude=.venv
@@ -20,14 +20,6 @@ CODECOV := \
 
 test: flake8 pytest
 	$(CODECOV)
-
-compile_requirements:
-	python3 -m piptools compile requirements.in
-
-compile_test_requirements:
-	python3 -m piptools compile requirements_test.in
-
-compile_all_requirements: compile_requirements compile_test_requirements
 
 publish:
 	rm -rf build dist; \

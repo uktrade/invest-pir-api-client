@@ -1,30 +1,37 @@
 """
 Invest PIR API client
 """
-import ast
-import re
 from setuptools import setup, find_packages
-
-
-def get_version():
-    pattern = re.compile(r'__version__\s+=\s+(.*)')
-
-    with open('pir_client/version.py', 'rb') as src:
-        return str(ast.literal_eval(
-            pattern.search(src.read().decode('utf-8')).group(1)
-        ))
 
 
 setup(
     name='pir_client',
-    version=get_version(),
+    version='0.2.0',
     url='https://github.com/uktrade/invest-pir-api-client',
     license='MIT',
     author='Department for International Trade',
     description='API client for PIR',
     packages=find_packages(),
     include_package_data=True,
-    install_requires=['directory-client-core'],
+    long_description=open('README.md').read(),
+    long_description_content_type='text/markdown',
+    install_requires=[
+        'directory_client_core>=5.1.0,<6.0.0',
+    ],
+    extras_require={
+        'test': [
+            'pytest==3.0.2',
+            'pytest-cov==2.3.1',
+            'pytest-sugar==0.8.0',
+            'flake8==3.0.4',
+            'requests_mock==1.1.0',
+            'codecov==2.0.9',
+            'twine>=1.11.0,<2.0.0',
+            'wheel>=0.31.0,<1.0.0',
+            'setuptools>=38.6.0,<39.0.0',
+            'httpretty'
+        ]
+    },
     classifiers=[
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
