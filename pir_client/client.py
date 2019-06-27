@@ -27,7 +27,7 @@ class PIRAPIClient(AbstractAPIClient):
         return self.request(
             url=self.endpoints['pir'],
             method="OPTIONS",
-        ).json()['actions']['POST']
+        )
 
     def get_reports(self):
         """
@@ -69,7 +69,8 @@ class PIRAPIClient(AbstractAPIClient):
             }
 
         """
-        options = self.get_options()
+        response = self.get_options()
+        options = response.json()['actions']['POST']
 
         if 'market' in options:
             market_choices = [
@@ -107,9 +108,7 @@ class PIRAPIClient(AbstractAPIClient):
             raise InvalidChoice(
                 'Sector option must be in {}'.format(sector_choices))
 
-        res = self.post(self.endpoints['pir'], data=data)
-        res.raise_for_status()
-        return res.json()
+        return self.post(self.endpoints['pir'], data=data)
 
 
 pir_api_client = PIRAPIClient(
