@@ -73,7 +73,7 @@ class APIClientTestCase(TestCase):
             'email': 'rollokb@gmail.com'
         })
 
-        self.assertIsInstance(res, dict)
+        self.assertIsInstance(res, object)
 
         with self.assertRaises(InvalidChoice):
             pir_api_client.create_report({

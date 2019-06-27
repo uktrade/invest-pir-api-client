@@ -69,7 +69,8 @@ class PIRAPIClient(AbstractAPIClient):
             }
 
         """
-        options = self.get_options()
+        response = self.get_options()
+        options = response.json()['actions']['POST']
 
         if 'market' in options:
             market_choices = [
