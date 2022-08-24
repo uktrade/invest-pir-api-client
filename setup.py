@@ -25,7 +25,7 @@ setup(
             'pytest-sugar==0.8.0',
             'flake8==3.0.4',
             'requests_mock==1.1.0',
-            'codecov==2.0.9',
+            'codecov==2.0.16',
             'twine>=1.11.0,<2.0.0',
             'wheel>=0.31.0,<1.0.0',
             'setuptools>=38.6.0,<39.0.0',
