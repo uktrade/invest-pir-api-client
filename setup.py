@@ -6,7 +6,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='pir_client',
-    version='1.1.0',
+    version='1.2.0',
     url='https://github.com/uktrade/invest-pir-api-client',
     license='MIT',
     author='Department for International Trade',
@@ -16,19 +16,20 @@ setup(
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     install_requires=[
-        'directory_client_core>=6.1.0,<7.0.0',
+        'directory_client_core>=6.1.0,<=7.2.2',
     ],
     extras_require={
         'test': [
-            'pytest==3.0.2',
-            'pytest-cov==2.3.1',
-            'pytest-sugar==0.8.0',
-            'flake8==3.0.4',
+            'pytest==5.4.0',
+            'pytest-codecov',
+            'pytest-cov',
+            'GitPython',
+            'pytest-sugar==0.9.5',
+            'flake8==5.0.4',
             'requests_mock==1.1.0',
-            'codecov==2.0.16',
-            'twine>=1.11.0,<2.0.0',
+            'twine',
             'wheel>=0.31.0,<1.0.0',
-            'setuptools>=38.6.0,<39.0.0',
+            'setuptools',
             'httpretty'
         ]
     },
@@ -45,6 +46,7 @@ setup(
         'Framework :: Django :: 2.0',
         'Framework :: Django :: 2.1',
         'Framework :: Django :: 2.2',
+        'Framework :: Django :: 4.2',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ]
 )

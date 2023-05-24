@@ -1,2 +1,6 @@
 [run]
-omit = .venv/*,setup.py,**tests*,pir_client/version.py
+omit =
+    .venv/*
+    setup.py
+    */*tests*/*
+    pir_client/version.py
